@@ -1,10 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Static Web Deploy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone - CI/CD Test</title>
+    
+    <style>
+        /* Base styles from netflixstyles.css / styles.css */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            z-index: 1;
+            transition: background-color 0.5s ease-in;
+        }
+
+        .navbar__logo {
+            width: 100px;
+            object-fit: contain;
+        }
+
+        .navbar__black {
+            background-color: #111;
+        }
+
+        .banner {
+            color: white;
+            object-fit: contain;
+            height: 448px;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .banner__contents {
+            margin-left: 30px;
+            padding-top: 140px;
+            height: 190px;
+        }
+
+        .banner__title {
+            font-size: 3rem;
+            font-weight: 800;
+            padding-bottom: 0.3rem;
+        }
+
+        .banner__button {
+            cursor: pointer;
+            color: #fff;
+            outline: none;
+            border: none;
+            font-weight: 700;
+            border-radius: 0.2vw;
+            padding: 0.5rem 2rem;
+            margin-right: 1rem;
+            background-color: rgba(51, 51, 51, 0.5);
+        }
+
+        .banner__button:hover {
+            color: #000;
+            background-color: #e6e6e6;
+            transition: all 0.2s;
+        }
+
+        .row {
+            margin-left: 20px;
+            color: white;
+        }
+
+        .row__posters {
+            display: flex;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            padding: 20px;
+        }
+
+        .row__posters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .row__poster {
+            width: 100%;
+            object-fit: contain;
+            max-height: 100px;
+            margin-right: 10px;
+            transition: transform 450ms;
+        }
+
+        .row__poster:hover {
+            transform: scale(1.08);
+        }
+
+        .row__posterLarge {
+            max-height: 250px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Deployed via Jenkins</h1>
-    <p>This page is automatically deployed from Git.</p>
+
+    <div id="nav" class="navbar">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo" class="navbar__logo">
+    </div>
+
+    <header class="banner" id="banner">
+        <div class="banner__contents">
+            <h1 class="banner__title" id="banner_title">Movie Name</h1>
+            <div class="banner__buttons">
+                <button class="banner__button">Play</button>
+                <button class="banner__button">My List</button>
+            </div>
+            <h1 class="banner__description" id="banner_description">
+                This is a movie description used for CI/CD testing.
+            </h1>
+        </div>
+        <div class="banner--fadeBottom"></div>
+    </header>
+
+    <div id="rows-container">
+        <div class="row">
+            <h2>NETFLIX ORIGINALS</h2>
+            <div class="row__posters" id="originals-row">
+                <div style="background: #333; width: 150px; height: 220px; border-radius: 4px; display: inline-block; margin-right: 10px;"></div>
+                <div style="background: #333; width: 150px; height: 220px; border-radius: 4px; display: inline-block; margin-right: 10px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple logic from scripts.js
+        const nav = document.getElementById('nav');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('navbar__black');
+            } else {
+                nav.classList.remove('navbar__black');
+            }
+        });
+
+        // Placeholder for CI/CD success check
+        console.log("Netflix Clone Project Loaded successfully for CI/CD testing.");
+    </script>
 </body>
 </html>
